@@ -1,4 +1,4 @@
 [build]
   base = "./"
-  publish = ".output/public"
+  publish = "./dist"
   command = "npx nuxi generate"
