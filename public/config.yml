@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+media_folder: "uploads/images"
+
+collections:
+  - name: "main-page-content"
+    label: "Conteúdo da página principal"
+    folder: "../content"
+    create: false
+    slug: "main-page-content"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Descrição meta", name: "description", widget: "string" }
+      - label: "Head"
+        name: "head"
+        widget: "object"
+        fields:
+          - label: "Meta"
+            name: "meta"
+            widget: "object"
+            fields:
+              - label: "Keywords"
+                name: "keywords"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Keywords",
+                      name: "name",
+                      widget: "hidden",
+                      default: "keywords",
+                    }
+                  - { label: "Keywords", name: "content", widget: "string" }
