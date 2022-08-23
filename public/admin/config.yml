@@ -8,7 +8,7 @@ collections:
     label: "Conteúdo da página principal"
     format: "frontmatter"
     folder: "../../content"
-    create: false
+    create: true
     slug: "main-page-content"
     fields:
       - { label: "Título", name: "title", widget: "string" }
