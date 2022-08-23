@@ -7,7 +7,7 @@ collections:
   - name: "main-page-content"
     label: "Conteúdo da página principal"
     format: "frontmatter"
-    folder: "../../content"
+    folder: "@/content"
     create: true
     slug: "main-page-content"
     fields:

@@ -10,13 +10,13 @@ export default defineNuxtConfig({
     css: [
         "~/assets/main.css"
     ],
-
-    head: {
-        script: [
-            { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" }
-        ],
+    app: {
+        head: {
+            script: [
+                { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" }
+            ],
+        }
     },
-
 
 
     postcss: {
