@@ -6,6 +6,7 @@ media_folder: "uploads/images"
 collections:
   - name: "main-page-content"
     label: "Conteúdo da página principal"
+    format: "frontmatter"
     folder: "../content"
     create: false
     slug: "main-page-content"
