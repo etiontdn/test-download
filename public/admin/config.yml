@@ -7,7 +7,7 @@ collections:
   - name: "main-page-content"
     label: "Conteúdo da página principal"
     format: "frontmatter"
-    folder: "@/content"
+    folder: "/content"
     create: true
     slug: "main-page-content"
     fields:
@@ -21,10 +21,5 @@ collections:
             name: "meta"
             widget: "list"
             fields:
-              - {
-                  label: "Keywords",
-                  name: "name",
-                  widget: "hidden",
-                  default: "keywords",
-                }
-              - { label: "Keywords", name: "content", widget: "string" }
+              - { label: "Name:", name: "name", widget: "string" }
+              - { label: "Content", name: "content", widget: "string" }
