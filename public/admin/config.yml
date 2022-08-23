@@ -1,7 +1,8 @@
 backend:
   name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
-media_folder: "uploads/images"
+media_folder: "public/uploads/images"
+public_folder: "/uploads/images"
 
 collections:
   - name: "main-page-content"
@@ -21,5 +22,5 @@ collections:
             name: "meta"
             widget: "list"
             fields:
-              - { label: "Name:", name: "name", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
               - { label: "Content", name: "content", widget: "string" }
