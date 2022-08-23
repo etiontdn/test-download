@@ -19,16 +19,12 @@ collections:
         fields:
           - label: "Meta"
             name: "meta"
-            widget: "object"
+            widget: "list"
             fields:
-              - label: "Keywords"
-                name: "keywords"
-                widget: "object"
-                fields:
-                  - {
-                      label: "Keywords",
-                      name: "name",
-                      widget: "hidden",
-                      default: "keywords",
-                    }
-                  - { label: "Keywords", name: "content", widget: "string" }
+              - {
+                  label: "Keywords",
+                  name: "name",
+                  widget: "hidden",
+                  default: "keywords",
+                }
+              - { label: "Keywords", name: "content", widget: "string" }
