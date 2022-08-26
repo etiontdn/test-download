@@ -2,7 +2,20 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    modules: ['@nuxt/content'],
+    runtimeConfig: {
+        public: {
+            client_id: process.env.CLIENT_ID,
+            domain: process.env.DOMAIN,
+            netlify_baseurl: process.env.NETLIFY_FUNC_BASEURL
+        }
+    },
+
+
+    modules: ['@nuxt/content', ['@pinia/nuxt', {
+        autoImports: [
+            'defineStore',
+        ],
+    },]],
 
     content: {    // https://content.nuxtjs.org/api/configuration  
     },
@@ -10,13 +23,13 @@ export default defineNuxtConfig({
     css: [
         "~/assets/main.css"
     ],
-    app: {
-        head: {
-            script: [
-                { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" }
-            ],
-        }
-    },
+    // app: {
+    //     head: {
+    //         script: [
+    //             { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" }
+    //         ],
+    //     }
+    // },
 
 
     postcss: {

@@ -4,6 +4,7 @@ const { data } = await useAsyncData('content', async () => {
     return data
 })
 
+
 const { _value: { title, description } } = data;
 
 
