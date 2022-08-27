@@ -5,6 +5,17 @@ async function login() {
     const data = formData.value
     const loginResponse = await useLogin(data)
 
+    console.log(loginResponse)
+
+    if (loginResponse.error) {
+        if (loginResponse.error.message === "Email not confirmed") {
+            alert("Email não confirmado")
+        }
+        else if (loginResponse.error.message === "Invalid login credentials") {
+            alert("Credenciais inválidas")
+        }
+    }
+
     const acessData = await useLoginCommerce()
 
     console.log(await useUserData())

@@ -1,69 +1,36 @@
 <script setup lang="ts">
-import { useNuxtApp, ref, useRuntimeConfig, useFetch } from '#imports';
-
-// const config = useRuntimeConfig()
-// let universalLogin = "https://dev-dq57g8fd.us.auth0.com/authorize?response_type=token&client_id=" + config.public.client_id + "&redirect_uri=http://localhost:8888/&scope=openid%20profile%20email"
-
-const count = ref(0)
+import { useNuxtApp, ref, useRuntimeConfig, useFetch, useSignup, useSignupCommerce, useUserData, useUserDelete } from '#imports';
 
 async function signup() {
     const { $supabase } = useNuxtApp()
 
-    if ($supabase().auth.user()) {
-        console.log("already logged in")
-        return
+    const userData = await useUserData()
+
+    if (!userData.error) {
+        alert("already logged in")
+
     }
 
     const { email, password, fullname, country, phone_code, phone } = formData.value
 
     const config = useRuntimeConfig()
 
-    const commerceSignup = await useFetch("/.netlify/functions/user", {
-        baseURL: config.public.netlify_baseurl,
-        method: "POST",
-        body: {
-            email
-        },
+    const commerceSignup = await useSignupCommerce(email)
 
-        key: "signup" + String(++count.value),
-
-        transform: function (data: any) {
-            return { id: data.id }
-        }
-    })
-
-    if (commerceSignup.error.value) {
-        alert("Ocorreu algum erro no cadastro")
+    if (commerceSignup.error) {
+        alert(commerceSignup.error)
         return false
     }
 
-    const { id } = commerceSignup.data.value
+    const id = commerceSignup.id
 
-    const { user, session, error } = await $supabase().auth.signUp(
-        {
-            email,
-            password,
-        },
-
-        {
-            data: {
-                fullname, country, phone_code, phone, customerId: id
-            }
-        })
+    const { user, error } = await useSignup(email, password, fullname, country, phone_code, phone, id)
 
     if (error) {
         alert("Ocorreu algum erro no cadastro")
-        const commerceSignup = await useFetch("/.netlify/functions/user", {
-            baseURL: config.public.netlify_baseurl,
-            method: "DELETE",
-            key: "delete" + String(++count.value),
-            body: {
-                id
-            },
-        })
+        const deleteUser = useUserDelete(id)
         return false
     }
-
 
     alert("cadastrado com sucesso")
     return true

@@ -7,7 +7,7 @@ export default async function () {
     const user = $supabase().auth.session()
 
     if (!user || !user.access_token) {
-        return { error: true }
+        return { error: "session not set" }
     }
 
     const { data } = await $supabase().from('profiles').select('*')
