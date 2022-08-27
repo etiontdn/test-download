@@ -1,6 +1,4 @@
-import { metaProperty } from "@babel/types";
 import { Handler } from "@netlify/functions";
-import { match } from "assert";
 import { $fetch } from 'ohmyfetch'
 
 const handler: Handler = async (event, context) => {

@@ -6,7 +6,9 @@ export default defineNuxtConfig({
         public: {
             client_id: process.env.CLIENT_ID,
             domain: process.env.DOMAIN,
-            netlify_baseurl: process.env.NETLIFY_FUNC_BASEURL
+            netlify_baseurl: process.env.NETLIFY_FUNC_BASEURL,
+            supabaseUrl: process.env.SUPABASE_URL,
+            supabaseAnon: process.env.SUPABASE_ANON
         }
     },
 

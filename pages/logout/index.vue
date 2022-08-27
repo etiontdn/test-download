@@ -1,14 +1,10 @@
 <script setup>
 import { useUserStore } from '~~/store/user-profile';
+import { useNuxtApp, ref, useRuntimeConfig, useFetch } from '#imports';
 
-function logout() {
-    const lgin = useCookie("lgin")
-    lgin.value = undefined
-
-    const userStore = useUserStore()
-    userStore.logout()
-
-
+async function logout() {
+    const { $supabase } = useNuxtApp()
+    const { error } = await $supabase().auth.signOut()
 }
 </script>
 <template>

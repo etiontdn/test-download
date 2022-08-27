@@ -19,8 +19,10 @@
   "dependencies": {
     "@netlify/functions": "^1.2.0",
     "@pinia/nuxt": "^0.4.1",
+    "@supabase/supabase-js": "^1.35.6",
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
-    "pinia": "^2.0.20"
+    "pinia": "^2.0.20",
+    "vee-validate": "^4.6.6"
   }
 }
