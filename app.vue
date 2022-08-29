@@ -25,9 +25,10 @@ const { $supabase } = useNuxtApp()
 
 const vLoaded = {
   mounted: async (el) => {
-    console.log($supabase().auth.session())
-    // if (route.hash.includes("access_token")) {
-    // }
+    const session = $supabase().auth.session()
+    if (session) {
+
+    }
   }
 }
 
